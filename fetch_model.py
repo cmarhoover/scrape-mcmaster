@@ -2,20 +2,21 @@
 """
 Scrape 3D models from McMaster-Carr.
 
-Requirements: Chromedriver.exe is in the same folder as this script.
+Requirements: msedgedriver.exe is in the same folder as this script.
 """
 from selenium import webdriver
+from selenium.webdriver.edge.options import Options
 import time
 
 test_part_numbers=['98173A200', '7529K105', '93250A440']
 
-def fetch_model(part_numbers, delay=3):
+def fetch_model(part_numbers, delay=15):
     if type(part_numbers) is str:
         part_numbers=[part_numbers]
     
     #Start browser
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(chrome_options=options)
+    options = Options()
+    driver = webdriver.Edge(options = options)
     
     #For each part number
     for part_number in part_numbers:
